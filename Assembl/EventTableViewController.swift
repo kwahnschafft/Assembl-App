@@ -184,18 +184,18 @@ class EventTableViewController: UITableViewController {
         let photo2 = UIImage(named: "me")
         let photo3 = UIImage(named: "comp")
         
-        let user1 = UserModel(username: "kwahn", password: "hey", email: "kwahnschafft@gmail.com", events: [])
-        let user2 = UserModel(username: "kel", password: "yoyo", email: "kelly@email.com", events: [])
+        let user1 = UserModel(username: "kwahn", password: "hey")
+        let user2 = UserModel(username: "kel", password: "yoyo")
         
-        guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1) else {
+        guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1!) else {
             fatalError("Unable to instantiate event1")
         }
         
-        guard let event2 = Event(name: "Men's March", info: "bye",photo: photo2, user: user1) else {
+        guard let event2 = Event(name: "Men's March", info: "bye",photo: photo2, user: user1!) else {
             fatalError("Unable to instantiate event2")
         }
         
-        guard let event3 = Event(name: "Dog's March", info: "what",photo: photo3, user: user2) else {
+        guard let event3 = Event(name: "Dog's March", info: "what",photo: photo3, user: user2!) else {
             fatalError("Unable to instantiate event3")
         }
         

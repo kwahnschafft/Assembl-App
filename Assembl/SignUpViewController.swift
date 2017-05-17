@@ -9,7 +9,12 @@
 import UIKit
 import os.log
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
+    
+    //IDK why it needs an initializer***
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //@IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
@@ -47,7 +52,7 @@ class SignUpViewController: UIViewController {
     private func updateSaveButtonState() {
         let text1 = usernameField.text ?? ""
         let text2 = passwordField.text ?? ""
-        saveButton.isEnabled = !text1.isEmpty && !text2.isEmpty
+        signUpButton.isEnabled = !text1.isEmpty && !text2.isEmpty
     }
     
     //enable sign up button when there is text
@@ -85,27 +90,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        // Validate the text fields **** make switch statement?
         
-        //Username
-        if username.characters.count < 5 {
-            //**** cancelButtonTitle?
-            alert = UIAlertController(title: "Invalid", message: "Username must be greater than 5 characters", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
-            return
-        }
-            /* else if UserProvider.containsUser(name: username) {
-             var alert = UIAlertController(title: "Invalid", message: "A user with this name already exists", preferredStyle: .alert)
-             alert.present(alert, animated: false, completion: nil)
-             return
-             }*/
-            
-            //Password
-        else if password.characters.count < 8 {
-            alert = UIAlertController(title: "Invalid", message: "Passwords must be greater than 8 characters", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
-            return
-        }
         
         //create user based on input
         //*** failable initializer??
