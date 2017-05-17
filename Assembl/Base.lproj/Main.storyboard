@@ -31,25 +31,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-78-0NB">
-                                <rect key="frame" x="61" y="315" width="253" height="253"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-78-0NB">
+                                <rect key="frame" x="61" y="315" width="253" height="254"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="mA7-ed-S3A" appends="YES" id="qO4-yy-Erx"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0G-Lh-bcr">
-                                <rect key="frame" x="156" y="576" width="63" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DVe-Ga-ORM"/>
-                                    <constraint firstAttribute="width" constant="63" id="Yet-Om-WsK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="CreateEventButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xZZ-z8-YNu"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e33-zs-VOo">
                                 <rect key="frame" x="61" y="99" width="253" height="39"/>
                                 <constraints>
@@ -65,15 +53,12 @@
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="156" id="4wZ-qH-72N"/>
                             <constraint firstItem="DK1-78-0NB" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="45" id="LHS-5c-rLe"/>
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="leading" secondItem="e33-zs-VOo" secondAttribute="leading" id="LJo-e5-HBH"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="F0G-Lh-bcr" secondAttribute="bottom" constant="17" id="QH5-3B-SFe"/>
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="leading" secondItem="DK1-78-0NB" secondAttribute="leading" id="VRf-la-Xq0"/>
                             <constraint firstItem="DK1-78-0NB" firstAttribute="top" secondItem="aLf-9B-m0n" secondAttribute="bottom" constant="21" id="XLB-AP-Uiy"/>
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="trailing" secondItem="DK1-78-0NB" secondAttribute="trailing" id="f9c-Db-N5Q"/>
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="top" secondItem="e33-zs-VOo" secondAttribute="bottom" constant="19" id="oaq-6p-6GU"/>
-                            <constraint firstItem="F0G-Lh-bcr" firstAttribute="top" secondItem="DK1-78-0NB" secondAttribute="bottom" constant="8" symbolic="YES" id="qAT-2x-ApP"/>
                             <constraint firstItem="aLf-9B-m0n" firstAttribute="trailing" secondItem="e33-zs-VOo" secondAttribute="trailing" id="sic-dq-QrX"/>
                             <constraint firstItem="DK1-78-0NB" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="w9A-UB-hXt"/>
-                            <constraint firstItem="DK1-78-0NB" firstAttribute="centerX" secondItem="F0G-Lh-bcr" secondAttribute="centerX" id="xbZ-0b-ghU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Event" id="j09-dj-lbu">
@@ -103,7 +88,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3137" y="535"/>
+            <point key="canvasLocation" x="3136.8000000000002" y="534.78260869565224"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="a6t-AA-uNb">

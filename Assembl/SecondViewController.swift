@@ -92,16 +92,13 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         // Depending on whether user is adding new event or editing old event,this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddEventMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddEventMode {
-            dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController{ //editing existing event (event scene was pushed onto navigation stack)
+
+        if let owningNavigationController = navigationController { //editing existing event (event scene was pushed onto navigation stack)
+            print("hereeeee")
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
-            fatalError("The SecondViewController is not inside a navigation controller.")
+        } else { //user is adding a new event
+            print("here")
+            dismiss(animated: true, completion: nil)
         }
     }
     // This method lets you configure a view controller before it's presented.
