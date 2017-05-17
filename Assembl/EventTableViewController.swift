@@ -12,6 +12,7 @@ import os.log
 //MARK: Properties
 
 var events = [Event]()
+var users = [UserModel]()
 
 class EventTableViewController: UITableViewController {
     
@@ -27,6 +28,13 @@ class EventTableViewController: UITableViewController {
         } else {
             //Load sample data
             loadSampleEvents()
+        }
+        
+        //Load the saved
+        if let savedUsers = loadUsers() {
+            users += savedUsers
+        } else {
+            users += []
         }
     }
     
@@ -159,12 +167,13 @@ class EventTableViewController: UITableViewController {
             saveEvents()
             
         }
-        /*
+        
         else if let sourceViewController = sender.source as? SignUpViewController, let user = sourceViewController.user {
             //add a new user
-            //users.append(user)
+            users.append(user)
+            saveUsers()
         
-        }*/
+        }
         
     }
     
@@ -210,4 +219,17 @@ class EventTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Event.ArchiveURL.path) as? [Event]
     }
     
+    private func saveUsers() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(users, toFile: UserModel.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Users successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save users...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadUsers() -> [UserModel]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? [UserModel]
+    }
 }
