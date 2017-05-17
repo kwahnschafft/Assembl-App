@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -118,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rKi-5v-H0b" id="2mQ-5O-dFQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXr-lx-bSy">
@@ -387,7 +387,7 @@
         <scene sceneID="CaV-g0-pkb">
             <objects>
                 <tableViewController id="DxS-lX-0ZV" customClass="EventTableViewController" customModule="Assembl" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mhS-zc-kTd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="mhS-zc-kTd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -459,7 +459,6 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dOn-au-yfH" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Ezc-LW-k7I" kind="relationship" relationship="viewControllers" id="2mT-PY-VlT"/>
                         <segue destination="tYe-fd-yoB" kind="relationship" relationship="viewControllers" id="KsP-zd-aBL"/>
                     </connections>
@@ -527,25 +526,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ZT3-21-nRz">
-                                <rect key="frame" x="61" y="315" width="253" height="297"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ZT3-21-nRz">
+                                <rect key="frame" x="61" y="315" width="253" height="253"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="oAx-vH-NPR" appends="YES" id="ZWM-aG-FGD"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c56-WL-dZI">
-                                <rect key="frame" x="156" y="620" width="63" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="63" id="URp-Dp-wC0"/>
-                                    <constraint firstAttribute="height" constant="30" id="f1S-uV-t9D"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="CreateEventButton:" destination="Jk7-Fn-3Fj" eventType="touchUpInside" id="D3L-Wi-9rS"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geV-2K-RO9">
                                 <rect key="frame" x="61" y="99" width="253" height="39"/>
                                 <constraints>
@@ -562,11 +549,8 @@
                             <constraint firstItem="pnE-sf-wC8" firstAttribute="leading" secondItem="geV-2K-RO9" secondAttribute="leading" id="2Zm-NB-V2n"/>
                             <constraint firstItem="ZT3-21-nRz" firstAttribute="leading" secondItem="r2K-6i-gLR" secondAttribute="leadingMargin" constant="45" id="588-rx-fJC"/>
                             <constraint firstItem="pnE-sf-wC8" firstAttribute="leading" secondItem="ZT3-21-nRz" secondAttribute="leading" id="GLL-xK-PEq"/>
-                            <constraint firstItem="WFy-Q6-Fv7" firstAttribute="top" secondItem="c56-WL-dZI" secondAttribute="bottom" constant="17" id="GaS-2g-Aux"/>
                             <constraint firstItem="ZT3-21-nRz" firstAttribute="top" secondItem="pnE-sf-wC8" secondAttribute="bottom" constant="21" id="KwQ-3j-iSS"/>
-                            <constraint firstItem="ZT3-21-nRz" firstAttribute="centerX" secondItem="c56-WL-dZI" secondAttribute="centerX" id="NIy-Cx-kLR"/>
                             <constraint firstItem="pnE-sf-wC8" firstAttribute="trailing" secondItem="geV-2K-RO9" secondAttribute="trailing" id="S4F-pm-LhP"/>
-                            <constraint firstItem="c56-WL-dZI" firstAttribute="top" secondItem="ZT3-21-nRz" secondAttribute="bottom" constant="8" symbolic="YES" id="bqj-QF-3OH"/>
                             <constraint firstItem="ZT3-21-nRz" firstAttribute="centerX" secondItem="r2K-6i-gLR" secondAttribute="centerX" id="eN9-0Z-zIh"/>
                             <constraint firstItem="pnE-sf-wC8" firstAttribute="top" secondItem="r2K-6i-gLR" secondAttribute="top" constant="156" id="inp-XV-U80"/>
                             <constraint firstItem="pnE-sf-wC8" firstAttribute="top" secondItem="geV-2K-RO9" secondAttribute="bottom" constant="19" id="nwt-NK-WTj"/>
@@ -599,7 +583,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3137" y="535"/>
+            <point key="canvasLocation" x="3136.8000000000002" y="534.78260869565224"/>
         </scene>
     </scenes>
     <resources>
@@ -609,6 +593,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="YAR-wd-B10"/>
         <segue reference="dub-NI-Yx0"/>
-        <segue reference="weS-hC-uuC"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -155,13 +155,8 @@ class EventTableViewController: UITableViewController {
                 //(.automatic chooses the best animation based on the current table)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-<<<<<<< HEAD
-            // Save the meals.
-            //saveMeals()
-=======
             // Save the events.
             saveEvents()
->>>>>>> origin/master
             
         }
         /*
@@ -198,27 +193,17 @@ class EventTableViewController: UITableViewController {
         events += [event1, event2, event3]
     }
     
-<<<<<<< HEAD
-    //archive the meals array, return true if successful
-   /* private func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Event.ArchiveURL.path)
-=======
     
     //archive the events array, return true if successful
     private func saveEvents() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: Event.ArchiveURL.path)
->>>>>>> origin/master
         
         if isSuccessfulSave {
             os_log("Events successfully saved.", log: OSLog.default, type: .debug)
         } else {
             os_log("Failed to save events.", log: OSLog.default, type: .error)
         }
-<<<<<<< HEAD
-    }*/
-=======
     } 
->>>>>>> origin/master
     
     //unarchive the object stored at the path Event.ArchiveURL.path and downcast that object to an array of Event objects.
     private func loadEvents() -> [Event]? {
