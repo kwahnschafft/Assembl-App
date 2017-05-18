@@ -44,17 +44,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: sign up button stuff
     
-    //disables the sign up button while entering info
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        signUpButton.isEnabled = false
-    }
+    //disables the sign up button while entering info necessary?**
+   // func textFieldDidBeginEditing(_ textField: UITextField) {
+    //    print(" 1:\(signUpButton.isEnabled)")
+     //   signUpButton.isEnabled = false
+     //   print(" 2:\(signUpButton.isEnabled)")
+    //}
     
     // Disable the  sign up button if the text field is empty
     private func updateSaveButtonState() {
         let text1 = usernameField.text ?? ""
         let text2 = passwordField.text ?? ""
-        //unexpected nill *****
-        signUpButton.isEnabled = (text1.isEmpty || text2.isEmpty)
+        
+        signUpButton.isEnabled = !(text1 == "" || text2 == "")
+      //  print("text1: \(text1) Text2: \(text2) code: \(!(text1 == "" || text2 == "")) \(signUpButton.isEnabled)")
     }
     
     //enable sign up button when there is text
@@ -69,10 +72,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        // Configure the destination view controller only when the save button is pressed
-        guard let button = sender as? UIBarButtonItem, button === signUpButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
+        // Configure the destination view controller only when the save button is pressed ***not working, is this necessary??
+     //   guard let button = sender as? UIBarButtonItem, button === signUpButton else {
+      //      os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+       //     return
         }
         
         
@@ -81,12 +84,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         //if theres a problem here, its probably because it goes to the rest of the method
         //to fix, add breaks ****
-        guard let username = self.usernameField.text, !username.isEmpty else {
+        let username = usernameField.text ?? ""
+    
+       if username == nil or username == "" {
             alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
             alert!.present(alert!, animated: false, completion: nil)
             return
         }
-        guard let password = self.passwordField.text, !password.isEmpty else {
+    
+        guard let password = passwordField.text, password != "" else {
             alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
             alert!.present(alert!, animated: false, completion: nil)
             return
@@ -293,6 +299,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
  
  */ */
 
-        }
+
 
 
