@@ -315,7 +315,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <action selector="signUpActionWithSender:" destination="dC5-IU-OSr" eventType="touchUpInside" id="eqD-Kl-kVR"/>
                                     <segue destination="49e-Tb-3d3" kind="show" id="Gy9-Ki-awi"/>
                                 </connections>
                             </button>
