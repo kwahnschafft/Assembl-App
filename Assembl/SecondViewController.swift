@@ -92,13 +92,14 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         // Depending on whether user is adding new event or editing old event,this view controller needs to be dismissed in two different ways.
-
-        if let owningNavigationController = navigationController { //editing existing event (event scene was pushed onto navigation stack)
-            print("hereeeee")
-            owningNavigationController.popViewController(animated: true)
-        } else { //user is adding a new event
-            print("here")
+        let isPresentingInAddEventMode = presentingViewController is UINavigationController
+        
+        if presentingViewController != nil {
             dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController{ //editing existing event (event scene was pushed onto navigation stack)
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The SecondViewController is not inside a navigation controller.")
         }
     }
     // This method lets you configure a view controller before it's presented.
@@ -114,11 +115,11 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = EventNameTextField.text ?? "" //return the value if there is one, otherwise return default of ""
         let info = EventDescriptionTextField.text ?? ""
         let photo = photoImageView.image
-        let tempUser = UserModel(username: "what", password: "hey", email: "k@gmail.com", events: [])
+        let tempUser = UserModel(username: "what", password: "hey")
         
         os_log("YOYO")
         // Set the event to be passed to SecondViewController after the unwind segue.
-        event = Event(name: name, info: info, photo: photo, user: tempUser)
+        event = Event(name: name, info: info, photo: photo, user: tempUser!)
     }
     
     
@@ -148,5 +149,11 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let text = EventNameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        EventDescriptionTextField.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
 }
 

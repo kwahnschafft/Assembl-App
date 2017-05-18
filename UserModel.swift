@@ -8,6 +8,7 @@
 
 import Foundation
 import os.log
+import UIKit
 
 
 enum UserError: String, Error {
@@ -16,20 +17,19 @@ enum UserError: String, Error {
 
 class UserModel: NSObject, NSCoding {
     
-    //properties
+    //MARK: Properties
     
     var username: String?
     var password: String?
     var email: String?
     var events: [String]
     
+    var alert: UIAlertController?
     
-    //MARK: Properties
     
     struct PropertyKey {
         static let username = "username"
         static let password = "password"
-        static let email = "email"
         static let events = [String]()
     }
     
@@ -47,23 +47,46 @@ class UserModel: NSObject, NSCoding {
     
     //construct with @name, @info
     
-    init(username: String, password: String, email: String, events: [String]) {
+    init?(username: String, password: String) {
         
         self.username = username
         self.password = password
-        self.email = email
-        self.events = events
+        self.events = [String]()
+        self.alert = nil
         
+        // Initialization should fail if username or password are are too short of if username is already taken
+        // Validate the text fields **** make switch statement?
+        
+        //Username
+        if username.characters.count < 5 {
+            //**** cancelButtonTitle?
+            alert = UIAlertController(title: "Invalid", message: "Username must be greater than 5 characters", preferredStyle: .alert)
+            alert!.present(alert!, animated: false, completion: nil)
+            return nil
+        }
+            /* else if UserProvider.containsUser(name: username) {
+             var alert = UIAlertController(title: "Invalid", message: "A user with this name already exists", preferredStyle: .alert)
+             alert!.present(alert, animated: false, completion: nil)
+             return nil
+             }*/
+            
+            //Password
+        else if password.characters.count < 8 {
+            alert = UIAlertController(title: "Invalid", message: "Passwords must be greater than 8 characters", preferredStyle: .alert)
+            alert!.present(alert!, animated: false, completion: nil)
+            return nil
+        }
     }
     
     
     //prints object's current state
     
     override var description: String {
-        return "Username: \(username), Password: \(password), Email, \(email)" //user for debugging, shouldn't be able to print password
+        return "Username: \(username), Password: \(password)" //user for debugging, shouldn't be able to print password
         
     }
     
+    /*
     // called when a user successfully completetes the sign up form
     func signUp() throws {
         do{
@@ -75,17 +98,17 @@ class UserModel: NSObject, NSCoding {
         
     }
     
+    
     // adds a user's info to the database
     func saveToDatabase(){
         
-    }
+    }*/
     
     //MARK: NSCoding
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(username, forKey: PropertyKey.username)
         aCoder.encode(password, forKey: PropertyKey.password)
-        aCoder.encode(email, forKey: PropertyKey.email)
         aCoder.encode(events, forKey: PropertyKey.events.joined(separator: "-"))
     }
     
@@ -101,18 +124,13 @@ class UserModel: NSObject, NSCoding {
             return nil
         }
         
-        guard let email = aDecoder.decodeObject(forKey: PropertyKey.email) as? String else {
-            os_log("Unable to decode the email for a User object.", log: OSLog.default, type: .debug)
-            return nil
-        }
-        
         guard let events = aDecoder.decodeObject(forKey: PropertyKey.events.joined(separator: "-")) as? [String] else {
             os_log("Unable to decode the events for a User object.", log: OSLog.default, type: .debug)
             return nil
         }
         
         // Must call designated initializer.
-        self.init(username: username, password: password, email: email, events: events)
+        self.init(username: username, password: password)
     }
     
 }

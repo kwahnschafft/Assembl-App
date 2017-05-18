@@ -12,6 +12,7 @@ import os.log
 //MARK: Properties
 
 var events = [Event]()
+var users = [UserModel]()
 
 class EventTableViewController: UITableViewController {
     
@@ -27,6 +28,13 @@ class EventTableViewController: UITableViewController {
         } else {
             //Load sample data
             loadSampleEvents()
+        }
+        
+        //Load the saved
+        if let savedUsers = loadUsers() {
+            users += savedUsers
+        } else {
+            users += []
         }
     }
     
@@ -159,12 +167,13 @@ class EventTableViewController: UITableViewController {
             saveEvents()
             
         }
-        /*
+        
         else if let sourceViewController = sender.source as? SignUpViewController, let user = sourceViewController.user {
             //add a new user
-            //users.append(user)
+            users.append(user)
+            saveUsers()
         
-        }*/
+        }
         
     }
     
@@ -175,18 +184,18 @@ class EventTableViewController: UITableViewController {
         let photo2 = UIImage(named: "me")
         let photo3 = UIImage(named: "comp")
         
-        let user1 = UserModel(username: "kwahn", password: "hey", email: "kwahnschafft@gmail.com", events: [])
-        let user2 = UserModel(username: "kel", password: "yoyo", email: "kelly@email.com", events: [])
+        let user1 = UserModel(username: "kwahn", password: "hey")
+        let user2 = UserModel(username: "kel", password: "yoyo")
         
-        guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1) else {
+        guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1!) else {
             fatalError("Unable to instantiate event1")
         }
         
-        guard let event2 = Event(name: "Men's March", info: "bye",photo: photo2, user: user1) else {
+        guard let event2 = Event(name: "Men's March", info: "bye",photo: photo2, user: user1!) else {
             fatalError("Unable to instantiate event2")
         }
         
-        guard let event3 = Event(name: "Dog's March", info: "what",photo: photo3, user: user2) else {
+        guard let event3 = Event(name: "Dog's March", info: "what",photo: photo3, user: user2!) else {
             fatalError("Unable to instantiate event3")
         }
         
@@ -210,4 +219,17 @@ class EventTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Event.ArchiveURL.path) as? [Event]
     }
     
+    private func saveUsers() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(users, toFile: UserModel.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Users successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save users...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadUsers() -> [UserModel]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? [UserModel]
+    }
 }
