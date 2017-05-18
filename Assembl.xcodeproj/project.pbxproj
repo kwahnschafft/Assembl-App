@@ -27,6 +27,7 @@
 		FB245C2B1ECB4FEA00A2E20E /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB245C2A1ECB4FEA00A2E20E /* EventsTableViewCell.swift */; };
 		FB33F6451EAF8331006EA7AC /* UsersEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB33F6441EAF8331006EA7AC /* UsersEventsTableViewController.swift */; };
 		FB8395F71EB8B97800D9D011 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8395F61EB8B97800D9D011 /* FirstViewController.swift */; };
+		FB8DAC951ECD200F004EBCCA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8DAC941ECD200F004EBCCA /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		FB245C2A1ECB4FEA00A2E20E /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		FB33F6441EAF8331006EA7AC /* UsersEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersEventsTableViewController.swift; sourceTree = "<group>"; };
 		FB8395F61EB8B97800D9D011 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		FB8DAC941ECD200F004EBCCA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		3AC9B7E41E8C01A800EDB3D5 /* Assembl */ = {
 			isa = PBXGroup;
 			children = (
+				FB8DAC941ECD200F004EBCCA /* HomeViewController.swift */,
 				3A1389981EBA225800DD0E8E /* Event.swift */,
 				3A2787AC1E952E5F004C2684 /* UserModel.swift */,
 				FB245C2A1ECB4FEA00A2E20E /* EventsTableViewCell.swift */,
@@ -197,7 +200,6 @@
 					};
 					3AC9B7E11E8C01A800EDB3D5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = T4QJDA55VR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -261,6 +263,7 @@
 				3AB686461EAF7EC200F44BC6 /* UserProvider.swift in Sources */,
 				3AD08CCC1EBDF87000670562 /* EventTableViewController.swift in Sources */,
 				3AC9B7EA1E8C01A800EDB3D5 /* SecondViewController.swift in Sources */,
+				FB8DAC951ECD200F004EBCCA /* HomeViewController.swift in Sources */,
 				3AC9B7E61E8C01A800EDB3D5 /* AppDelegate.swift in Sources */,
 				3A04D7E91EAA74F400C2D942 /* EventProvider.swift in Sources */,
 				FB8395F71EB8B97800D9D011 /* FirstViewController.swift in Sources */,
@@ -428,7 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T4QJDA55VR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Assembl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ksk.Assembl;
@@ -441,7 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T4QJDA55VR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Assembl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ksk.Assembl;
