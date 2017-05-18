@@ -22,17 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aLf-9B-m0n">
-                                <rect key="frame" x="61" y="157" width="253" height="134"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="134" id="KcQ-1q-N7i"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-78-0NB">
-                                <rect key="frame" x="61" y="315" width="253" height="254"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-78-0NB">
+                                <rect key="frame" x="61" y="315" width="253" height="253"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="mA7-ed-S3A" appends="YES" id="qO4-yy-Erx"/>
@@ -47,6 +38,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" verticalCompressionResistancePriority="100" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aLf-9B-m0n">
+                                <rect key="frame" x="61" y="157" width="253" height="134"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="134" id="KcQ-1q-N7i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -187,11 +187,11 @@
             </objects>
             <point key="canvasLocation" x="1152.8" y="1226.5367316341831"/>
         </scene>
-        <!--Item-->
+        <!--My Events-->
         <scene sceneID="BcS-mx-PuV">
             <objects>
                 <navigationController id="tYe-fd-yoB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="WiJ-Jl-kPV"/>
+                    <tabBarItem key="tabBarItem" title="My Events" image="person" selectedImage="person" id="WiJ-Jl-kPV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tX5-KF-zKj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -396,10 +396,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-0H-hpg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdK-0H-hpg">
                                             <rect key="frame" x="106" y="37" width="261" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -453,11 +453,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Events-->
+        <!--All Events-->
         <scene sceneID="LbG-VE-Jbs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ezc-LW-k7I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="hNV-pO-awX"/>
+                    <tabBarItem key="tabBarItem" title="All Events" image="calendar" selectedImage="calendar" id="hNV-pO-awX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pGT-ct-Nzc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -503,7 +503,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pnE-sf-wC8">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" verticalHuggingPriority="50" misplaced="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pnE-sf-wC8">
                                 <rect key="frame" x="61" y="157" width="253" height="134"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -580,11 +580,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" width="30" height="30"/>
         <image name="defaultPhoto" width="100" height="100"/>
+        <image name="person" width="22" height="28"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YAR-wd-B10"/>
-        <segue reference="oxD-sJ-rH1"/>
+        <segue reference="dub-NI-Yx0"/>
     </inferredMetricsTieBreakers>
 </document>

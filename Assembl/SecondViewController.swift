@@ -94,9 +94,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Depending on whether user is adding new event or editing old event,this view controller needs to be dismissed in two different ways.
         let isPresentingInAddEventMode = presentingViewController is UINavigationController
         
-        os_log("ASDLFJALSDFJLADSJFLSJDFLAJSDFLASJFLASJDFLASJDFLJSADLFJASLDFJLKDFJLASJDFLAJDSF")
-        print("\(presentingViewController)")
-        
         if presentingViewController != nil {
             dismiss(animated: true, completion: nil)
         } else if let owningNavigationController = navigationController{ //editing existing event (event scene was pushed onto navigation stack)
@@ -152,5 +149,11 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let text = EventNameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        EventDescriptionTextField.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
 }
 
