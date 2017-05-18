@@ -12,16 +12,17 @@ import os.log
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //IDK why it needs an initializer***
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   // required init?(coder aDecoder: NSCoder) {
+     //   super.init()
+   //     fatalError("init(coder:) has not been implemented")
+   // }
     
     //@IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
-    var alert: UIAlertController
+    var alert: UIAlertController?
     var user: UserModel?
     
     override func viewDidLoad() {
@@ -52,7 +53,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     private func updateSaveButtonState() {
         let text1 = usernameField.text ?? ""
         let text2 = passwordField.text ?? ""
-        signUpButton.isEnabled = !text1.isEmpty && !text2.isEmpty
+        //unexpected nill *****
+        signUpButton.isEnabled = (text1.isEmpty || text2.isEmpty)
     }
     
     //enable sign up button when there is text
@@ -81,12 +83,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         //to fix, add breaks ****
         guard let username = self.usernameField.text, !username.isEmpty else {
             alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+            alert!.present(alert!, animated: false, completion: nil)
             return
         }
         guard let password = self.passwordField.text, !password.isEmpty else {
             alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+            alert!.present(alert!, animated: false, completion: nil)
             return
         }
         
