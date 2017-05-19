@@ -45,7 +45,7 @@ class EventsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
+        // Fetches the appropriate event for the data source layout.
         let event = events[indexPath.row]
         
         cell.nameLabel.text = event.name
@@ -121,8 +121,8 @@ class EventsTableViewController: UITableViewController {
                 //(.automatic chooses the best animation based on the current table)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-            // Save the meals.
-            //saveMeals()
+            // Save the events
+            saveEvents()
             
         }
         
@@ -135,8 +135,8 @@ class EventsTableViewController: UITableViewController {
         let photo2 = UIImage(named: "me")
         let photo3 = UIImage(named: "comp")
         
-        let user1 = UserModel(username: "kwahn", password: "hey", email: "kwahnschafft@gmail.com")
-        let user2 = UserModel(username: "kel", password: "yoyo", email: "kelly@email.com")
+        let user1 = UserModel(username: "kwahn", password: "hey")
+        let user2 = UserModel(username: "kel", password: "yoyo")
         
         guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1) else {
             fatalError("Unable to instantiate event1")
@@ -153,17 +153,15 @@ class EventsTableViewController: UITableViewController {
         events += [event1, event2, event3]
     }
     
-    //archive the meals array, return true if successful
-    /*private func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Event.ArchiveURL.path)
-        
+    private func saveEvents() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: Events.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("Events successfully saved.", log: OSLog.default, type: .debug)
         } else {
-            os_log("Failed to save events.", log: OSLog.default, type: .error)
+            os_log("Failed to save events...", log: OSLog.default, type: .error)
         }
     }
-    */
+    
     //unarchive the object stored at the path Event.ArchiveURL.path and downcast that object to an array of Event objects.
     private func loadEvents() -> [Event]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Event.ArchiveURL.path) as? [Event]

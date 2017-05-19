@@ -21,7 +21,6 @@ class UserModel: NSObject, NSCoding {
     
     var username: String?
     var password: String?
-    var email: String?
     var events: [String]
     
     var alert: UIAlertController?
@@ -47,11 +46,11 @@ class UserModel: NSObject, NSCoding {
     
     //construct with @name, @info
     
-    init?(username: String, password: String) {
+    init?(username: String, password: String, events: [String]) {
         
         self.username = username
         self.password = password
-        self.events = [String]()
+        self.events = events
         self.alert = nil
         
         // Initialization should fail if username or password are are too short of if username is already taken
@@ -130,7 +129,7 @@ class UserModel: NSObject, NSCoding {
         }
         
         // Must call designated initializer.
-        self.init(username: username, password: password)
+        self.init(username: username, password: password, events: events)
     }
     
 }

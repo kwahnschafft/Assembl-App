@@ -92,7 +92,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
         // Depending on whether user is adding new event or editing old event,this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddEventMode = presentingViewController is UINavigationController
         
         if presentingViewController != nil {
             dismiss(animated: true, completion: nil)

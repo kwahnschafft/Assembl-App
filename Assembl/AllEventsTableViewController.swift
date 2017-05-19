@@ -111,5 +111,25 @@ class AllEventsTableViewController: UITableViewController {
     
     private func loadAllEvents() {
         
+        let photo1 = UIImage(named: "fut")
+        let photo2 = UIImage(named: "me")
+        let photo3 = UIImage(named: "comp")
+        
+        let user1 = UserModel(username: "kwahn", password: "hey", events: [String]())
+        let user2 = UserModel(username: "kel", password: "yoyo", events: [String]())
+        
+        guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1) else {
+            fatalError("Unable to instantiate event1")
+        }
+        
+        guard let event2 = Event(name: "Men's March", info: "bye",photo: photo2, user: user1) else {
+            fatalError("Unable to instantiate event2")
+        }
+        
+        guard let event3 = Event(name: "Dog's March", info: "what",photo: photo3, user: user2) else {
+            fatalError("Unable to instantiate event3")
+        }
+        
+        allEvents += [event1, event2, event3]
     }
 }
