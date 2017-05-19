@@ -114,7 +114,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = EventNameTextField.text ?? "" //return the value if there is one, otherwise return default of ""
         let info = EventDescriptionTextField.text ?? ""
         let photo = photoImageView.image
-        let tempUser = UserModel(username: "what", password: "hey")
+        let tempUser = UserModel(username: "what", password: "hey", events: [String]())
         
         os_log("YOYO")
         // Set the event to be passed to SecondViewController after the unwind segue.

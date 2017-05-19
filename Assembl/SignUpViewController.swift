@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         //create user based on input
         //*** failable initializer??
-        user = UserModel(username: username, password: password)
+        user = UserModel(username: username, password: password, events: [String]())
         
     }
     
