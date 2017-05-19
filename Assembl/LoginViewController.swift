@@ -29,17 +29,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(sender: AnyObject) {
-        var alert: UIAlertController
+        //var alert: UIAlertController
         
         // check if fields are full
         guard let username = self.usernameField.text, !username.isEmpty else {
-            alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+           // alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
+           // alert.present(alert, animated: false, completion: nil)
             return
         }
         guard let password = self.passwordField.text, !password.isEmpty else {
-            alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+          //  alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
+          //  alert.present(alert, animated: false, completion: nil)
             return
         }
          //   // Run a spinner to show a task in progress
@@ -52,13 +52,13 @@ class LoginViewController: UIViewController {
         do {
             try UserProvider.loginUser(name: username, password: password)
         } catch UserError.invalidUser {
-            alert = UIAlertController(title: "Invalid", message: "User with this name does not exist", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+          //  alert = UIAlertController(title: "Invalid", message: "User with this name does not exist", preferredStyle: .alert)
+           // alert.present(alert, animated: false, completion: nil)
             return
         }
         catch UserError.incorrectPassword {
-            alert = UIAlertController(title: "Invalid", message: "Username and password do not match", preferredStyle: .alert)
-            alert.present(alert, animated: false, completion: nil)
+          //  alert = UIAlertController(title: "Invalid", message: "Username and password do not match", preferredStyle: .alert)
+          //  alert.present(alert, animated: false, completion: nil)
             return
         }
         

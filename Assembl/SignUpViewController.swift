@@ -15,7 +15,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
-   // var alert: UIAlertController?
+    // var alert: UIAlertController?
     var user: UserModel?
     
     required init(coder aDecoder: NSCoder!) {
@@ -42,10 +42,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
     //MARK: sign up button stuff
     
     //disables the sign up button while entering info necessary?**
-   // func textFieldDidBeginEditing(_ textField: UITextField) {
+    // func textFieldDidBeginEditing(_ textField: UITextField) {
     //    print(" 1:\(signUpButton.isEnabled)")
-     //   signUpButton.isEnabled = false
-     //   print(" 2:\(signUpButton.isEnabled)")
+    //   signUpButton.isEnabled = false
+    //   print(" 2:\(signUpButton.isEnabled)")
     //}
     
     // Disable the  sign up button if the text field is empty
@@ -54,14 +54,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
         let text2 = passwordField.text ?? ""
         
         signUpButton.isEnabled = !(text1 == "" || text2 == "")
-      //  print("text1: \(text1) Text2: \(text2) code: \(!(text1 == "" || text2 == "")) \(signUpButton.isEnabled)")
+        //  print("text1: \(text1) Text2: \(text2) code: \(!(text1 == "" || text2 == "")) \(signUpButton.isEnabled)")
     }
     
     //enable sign up button when there is text
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
     }
-
+    
     
     //MARK: Navigation
     
@@ -70,9 +70,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
         super.prepare(for: segue, sender: sender)
         
         // Configure the destination view controller only when the save button is pressed ***not working, is this necessary??
-            guard let button = sender as? UIBarButtonItem, button === signUpButton else {
+        guard let button = sender as? UIBarButtonItem, button === signUpButton else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-           return
+            return
         }
         
         
@@ -81,25 +81,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
         
         //if theres a problem here, its probably because it goes to the rest of the method
         //to fix, add breaks ****
-    
-       guard let username = usernameField.text, username != "" else {
-       //     self.alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
-     //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
-       //     print("Cancel Button Pressed")
-       // })
-       // self.alert!.addAction(alertCancelAction)
-      //      self.present(alert!, animated: false, completion: nil)
+        
+        guard let username = usernameField.text, username != "" else {
+            //     self.alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
+            //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
+            //     print("Cancel Button Pressed")
+            // })
+            // self.alert!.addAction(alertCancelAction)
+            //      self.present(alert!, animated: false, completion: nil)
             return
         }
-    
+        
         guard let password = passwordField.text, password != "" else {
-        //    alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
-         //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
+            //    alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
+            //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
             //    print("Cancel Button Pressed")
-           // })
-          //  self.alert!.addAction(alertCancelAction)
-
-           // self.present(alert!, animated: false, completion: nil)
+            // })
+            //  self.alert!.addAction(alertCancelAction)
+            
+            // self.present(alert!, animated: false, completion: nil)
             return
         }
         
@@ -109,10 +109,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
         //*** failable initializer??
         user = UserModel(username: username, password: password, events: [String]())
         
+        users.append(user!)
+        saveUsers()
+        
     }
     
+    private func saveUsers() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(users, toFile: UserModel.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Users successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save users...", log: OSLog.default, type: .error)
+        }
+    }
     
- }
+    private func loadUsers() -> [UserModel]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? [UserModel]
+    }
+    
+}
 
 
 

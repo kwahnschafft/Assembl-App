@@ -23,7 +23,7 @@ class UserModel: NSObject, NSCoding {
     var password: String?
     var events: [String]
     
-    var alert: UIAlertController?
+    //var alert: UIAlertController?
     
     
     struct PropertyKey {
@@ -51,7 +51,7 @@ class UserModel: NSObject, NSCoding {
         self.username = username
         self.password = password
         self.events = events
-        self.alert = nil
+       // self.alert = nil
         
         // Initialization should fail if username or password are are too short of if username is already taken
         // Validate the text fields **** make switch statement?
@@ -59,8 +59,8 @@ class UserModel: NSObject, NSCoding {
         //Username
         if username.characters.count < 5 {
             //**** cancelButtonTitle?
-            alert = UIAlertController(title: "Invalid", message: "Username must be greater than 5 characters", preferredStyle: .alert)
-            alert!.present(alert!, animated: false, completion: nil)
+          //  alert = UIAlertController(title: "Invalid", message: "Username must be greater than 5 characters", preferredStyle: .alert)
+          //  alert!.present(alert!, animated: false, completion: nil)
             return nil
         }
             /* else if UserProvider.containsUser(name: username) {
@@ -71,8 +71,8 @@ class UserModel: NSObject, NSCoding {
             
             //Password
         else if password.characters.count < 8 {
-            alert = UIAlertController(title: "Invalid", message: "Passwords must be greater than 8 characters", preferredStyle: .alert)
-            alert!.present(alert!, animated: false, completion: nil)
+            //alert = UIAlertController(title: "Invalid", message: "Passwords must be greater than 8 characters", preferredStyle: .alert)
+            //alert!.present(alert!, animated: false, completion: nil)
             return nil
         }
     }
