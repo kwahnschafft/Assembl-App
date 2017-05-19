@@ -12,7 +12,8 @@ class AllEventsTableViewController: UITableViewController {
     
     //MARK: Properties
     
-    var allEvents = [Event]()
+    var myEvents = [Event]()
+    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,22 @@ class AllEventsTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        loadAllEvents()
+        if let savedEvents = loadEvents() {
+            events += savedEvents
+        } else {
+            //d
+        }
+        
+        if let currentUser = loadCurrentUser() {
+            var namesOfEvents = currentUser.events
+            for event in events {
+                if namesOfEvents.contains(event.name) {
+                    myEvents.add(event)
+                }
+            }
+        } else {
+            //asdfalsdkfjs
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,8 +66,8 @@ class AllEventsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of EventsTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
-        let event = allEvents[indexPath.row]
+        // Fetches the appropriate event for the data source layout.
+        let event = myEvents[indexPath.row]
         
         
         cell.nameLabel.text = event.name
@@ -131,5 +147,14 @@ class AllEventsTableViewController: UITableViewController {
         }
         
         allEvents += [event1, event2, event3]
+    }
+    
+    private func loadCurrentUser() -> UserModel? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? UserModel
+    }
+    
+    //unarchive the object stored at the path Event.ArchiveURL.path and downcast that object to an array of Event objects.
+    private func loadEvents() -> [Event]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Event.ArchiveURL.path) as? [Event]
     }
 }
