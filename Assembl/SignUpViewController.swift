@@ -70,10 +70,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         super.prepare(for: segue, sender: sender)
         
         // Configure the destination view controller only when the save button is pressed ***not working, is this necessary??
-     //   guard let button = sender as? UIBarButtonItem, button === signUpButton else {
-      //      os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-       //     return
-     //   }
+            guard let button = sender as? UIBarButtonItem, button === signUpButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+           return
+        }
         
         
         //Check input values
@@ -83,14 +83,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         //to fix, add breaks ****
     
        guard let username = usernameField.text, username != "" else {
-            self.alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
-            self.present(alert!, animated: false, completion: nil)
+       //     self.alert = UIAlertController(title: "Invalid", message: "Username required", preferredStyle: .alert)
+     //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
+       //     print("Cancel Button Pressed")
+       // })
+       // self.alert!.addAction(alertCancelAction)
+      //      self.present(alert!, animated: false, completion: nil)
             return
         }
     
         guard let password = passwordField.text, password != "" else {
-            alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
-            self.present(alert!, animated: false, completion: nil)
+        //    alert = UIAlertController(title: "Invalid", message: "Password required", preferredStyle: .alert)
+         //   let alertCancelAction=UIAlertAction(title:"Cancel", style: UIAlertActionStyle.destructive,handler: { action in
+            //    print("Cancel Button Pressed")
+           // })
+          //  self.alert!.addAction(alertCancelAction)
+
+           // self.present(alert!, animated: false, completion: nil)
             return
         }
         
