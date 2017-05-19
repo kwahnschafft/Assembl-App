@@ -21,7 +21,7 @@
 		3AC9B7EF1E8C01A800EDB3D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9B7EE1E8C01A800EDB3D5 /* Assets.xcassets */; };
 		3AC9B7F21E8C01A800EDB3D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9B7F01E8C01A800EDB3D5 /* LaunchScreen.storyboard */; };
 		3AD08CCC1EBDF87000670562 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD08CCA1EBDF87000670562 /* EventTableViewController.swift */; };
-		3AD08CCD1EBDF87000670562 /* EventTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD08CCB1EBDF87000670562 /* EventTableViewController.xib */; };
+		3AF2E0891ECE6C4D00ED0536 /* AllEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2E0881ECE6C4D00ED0536 /* AllEventsTableViewController.swift */; };
 		A2615DC81E8FE16A008C9D4B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2615DC71E8FE16A008C9D4B /* SignUpViewController.swift */; };
 		A2C3C93C1EB8BF1100A5AAED /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2C3C93B1EB8BF1100A5AAED /* data.plist */; };
 		FB245C2B1ECB4FEA00A2E20E /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB245C2A1ECB4FEA00A2E20E /* EventsTableViewCell.swift */; };
@@ -60,7 +60,7 @@
 		3AC9B7F11E8C01A800EDB3D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AC9B7F31E8C01A800EDB3D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AD08CCA1EBDF87000670562 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
-		3AD08CCB1EBDF87000670562 /* EventTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewController.xib; sourceTree = "<group>"; };
+		3AF2E0881ECE6C4D00ED0536 /* AllEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllEventsTableViewController.swift; sourceTree = "<group>"; };
 		A2615DC51E8FE137008C9D4B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A2615DC71E8FE16A008C9D4B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A2C3C93B1EB8BF1100A5AAED /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
@@ -125,13 +125,13 @@
 				3AC9B7E51E8C01A800EDB3D5 /* AppDelegate.swift */,
 				3A2787AE1E952E73004C2684 /* HomeModel.swift */,
 				3AC9B7E71E8C01A800EDB3D5 /* EventsTableViewController.swift */,
+				3AF2E0881ECE6C4D00ED0536 /* AllEventsTableViewController.swift */,
 				3AC9B7E91E8C01A800EDB3D5 /* SecondViewController.swift */,
 				3A2787AA1E952E53004C2684 /* EventModel.swift */,
 				3AB686451EAF7EC200F44BC6 /* UserProvider.swift */,
 				3A04D7E81EAA74F400C2D942 /* EventProvider.swift */,
 				3AC9B7EB1E8C01A800EDB3D5 /* Main.storyboard */,
 				3AD08CCA1EBDF87000670562 /* EventTableViewController.swift */,
-				3AD08CCB1EBDF87000670562 /* EventTableViewController.xib */,
 				3AC9B7EE1E8C01A800EDB3D5 /* Assets.xcassets */,
 				3AC9B7F01E8C01A800EDB3D5 /* LaunchScreen.storyboard */,
 				3AC9B7F31E8C01A800EDB3D5 /* Info.plist */,
@@ -238,7 +238,6 @@
 				3AC9B7F21E8C01A800EDB3D5 /* LaunchScreen.storyboard in Resources */,
 				3AC9B7EF1E8C01A800EDB3D5 /* Assets.xcassets in Resources */,
 				A2C3C93C1EB8BF1100A5AAED /* data.plist in Resources */,
-				3AD08CCD1EBDF87000670562 /* EventTableViewController.xib in Resources */,
 				3AC9B7ED1E8C01A800EDB3D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +267,7 @@
 				3A04D7E91EAA74F400C2D942 /* EventProvider.swift in Sources */,
 				FB8395F71EB8B97800D9D011 /* FirstViewController.swift in Sources */,
 				FB245C2B1ECB4FEA00A2E20E /* EventsTableViewCell.swift in Sources */,
+				3AF2E0891ECE6C4D00ED0536 /* AllEventsTableViewController.swift in Sources */,
 				3A2787AF1E952E73004C2684 /* HomeModel.swift in Sources */,
 				3A2787AB1E952E53004C2684 /* EventModel.swift in Sources */,
 				3A2787AD1E952E5F004C2684 /* UserModel.swift in Sources */,
