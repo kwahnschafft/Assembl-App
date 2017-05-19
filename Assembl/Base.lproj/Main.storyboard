@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="3136.8000000000002" y="534.78260869565224"/>
         </scene>
-        <!--Root View Controller-->
+        <!--All Events-->
         <scene sceneID="a6t-AA-uNb">
             <objects>
-                <tableViewController id="GtC-CG-KZc" customClass="EventTableViewController" customModule="Assembl" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GtC-CG-KZc" customClass="EventsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="PFC-no-n2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
                             <outlet property="delegate" destination="GtC-CG-KZc" id="ZlW-Jm-erA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="d2H-GR-aBj"/>
+                    <navigationItem key="navigationItem" title="All Events" id="d2H-GR-aBj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MU0-H6-ciJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,24 +1,26 @@
 //
-//  EventsTableViewController.swift
+//  AllEventsTableViewController.swift
 //  Assembl
 //
-//  Created by Kiara Wahnschafft on 5/6/17.
+//  Created by Kiara Wahnschafft on 5/18/17.
 //  Copyright © 2017 KSK. All rights reserved.
 //
 
 import UIKit
 
-//MARK: Properties
-
-var events = [Event]()
-
-class EventsTableViewController: UITableViewController {
+class AllEventsTableViewController: UITableViewController {
+    
+    //MARK: Properties
+    
+    var allEvents = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Load sample data
-        loadSampleEvents()
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        loadAllEvents()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,27 +31,31 @@ class EventsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        // #warning Incomplete implementation, return the number of rows
+        return allEvents.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "EventTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "EventsTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventsTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of EventsTableViewCell.")
         }
         
-        // Fetches the appropriate event for the data source layout.
-        let event = events[indexPath.row]
+        // Fetches the appropriate meal for the data source layout.
+        let event = allEvents[indexPath.row]
+        
         
         cell.nameLabel.text = event.name
-        cell.infoLabel.text = event.info
+        cell.nameLabel.text = event.info
         cell.photoImageView.image = event.photo
         
         return cell
@@ -101,42 +107,16 @@ class EventsTableViewController: UITableViewController {
      }
      */
     
-    //MARK: Actions
-    
-    @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
-        
-        if let sourceViewController = sender.source as? SecondViewController, let event = sourceViewController.event {
-            
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing event.
-                events[selectedIndexPath.row] = event
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            }
-            else {
-                // Add a new event.
-                let newIndexPath = IndexPath(row: events.count, section: 0)
-                events.append(event)
-                
-                //animate the addition of a row to the table view containing this new event
-                //(.automatic chooses the best animation based on the current table)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
-            // Save the events
-            saveEvents()
-            
-        }
-        
-    }
-    
     //MARK: Private Methods
     
-    private func loadSampleEvents() {
+    private func loadAllEvents() {
+        
         let photo1 = UIImage(named: "fut")
         let photo2 = UIImage(named: "me")
         let photo3 = UIImage(named: "comp")
         
-        let user1 = UserModel(username: "kwahn", password: "hey")
-        let user2 = UserModel(username: "kel", password: "yoyo")
+        let user1 = UserModel(username: "kwahn", password: "hey", events: [String]())
+        let user2 = UserModel(username: "kel", password: "yoyo", events: [String]())
         
         guard let event1 = Event(name: "Women's March", info: "yo",photo: photo1, user: user1) else {
             fatalError("Unable to instantiate event1")
@@ -150,21 +130,6 @@ class EventsTableViewController: UITableViewController {
             fatalError("Unable to instantiate event3")
         }
         
-        events += [event1, event2, event3]
+        allEvents += [event1, event2, event3]
     }
-    
-    private func saveEvents() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(events, toFile: Events.ArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("Events successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save events...", log: OSLog.default, type: .error)
-        }
-    }
-    
-    //unarchive the object stored at the path Event.ArchiveURL.path and downcast that object to an array of Event objects.
-    private func loadEvents() -> [Event]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Event.ArchiveURL.path) as? [Event]
-    }
-    
 }
