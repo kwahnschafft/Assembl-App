@@ -94,7 +94,7 @@
         <!--All Events-->
         <scene sceneID="a6t-AA-uNb">
             <objects>
-                <tableViewController id="GtC-CG-KZc" customClass="EventsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="GtC-CG-KZc" customClass="EventsTableViewController" customModule="Assembl" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="PFC-no-n2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,14 +112,14 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-JP-G1h">
-                                            <rect key="frame" x="98" y="0.0" width="114" height="26"/>
+                                            <rect key="frame" x="98" y="8" width="269" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDd-xZ-E71">
-                                            <rect key="frame" x="98" y="22" width="232" height="47"/>
+                                            <rect key="frame" x="98" y="22" width="269" height="47"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -128,6 +128,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="infoLabel" destination="aDd-xZ-E71" id="oKo-nK-Ms0"/>
+                                    <outlet property="nameLabel" destination="6Kv-JP-G1h" id="nnG-ps-htT"/>
+                                    <outlet property="photoImageView" destination="UXr-lx-bSy" id="0vS-DG-Dh0"/>
                                     <segue destination="nx3-DO-z0v" kind="show" id="Dw8-Mt-6md"/>
                                 </connections>
                             </tableViewCell>
@@ -187,11 +190,11 @@
             </objects>
             <point key="canvasLocation" x="1152.8" y="1226.5367316341831"/>
         </scene>
-        <!--My Events-->
+        <!--All Events-->
         <scene sceneID="BcS-mx-PuV">
             <objects>
                 <navigationController id="tYe-fd-yoB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Events" image="person" selectedImage="person" id="WiJ-Jl-kPV"/>
+                    <tabBarItem key="tabBarItem" title="All Events" image="calendar" selectedImage="calendar" id="WiJ-Jl-kPV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tX5-KF-zKj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -361,7 +364,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="Ka6-g2-w6C" id="OsM-eN-1rV"/>
-                        <outlet property="signUpButton" destination="ArB-n1-6nV" id="qlV-vI-x3W"/>
+                        <outlet property="signUpButton" destination="ArB-n1-6nV" id="TEe-nm-aol"/>
                         <outlet property="usernameField" destination="N8z-au-WHJ" id="RB2-t9-gn5"/>
                     </connections>
                 </viewController>
@@ -369,7 +372,7 @@
             </objects>
             <point key="canvasLocation" x="-137" y="-900"/>
         </scene>
-        <!--Your Events-->
+        <!--My Events-->
         <scene sceneID="CaV-g0-pkb">
             <objects>
                 <tableViewController id="DxS-lX-0ZV" customClass="EventTableViewController" customModule="Assembl" customModuleProvider="target" sceneMemberID="viewController">
@@ -421,7 +424,7 @@
                     <toolbarItems>
                         <barButtonItem systemItem="add" id="eRa-dV-16h"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Your Events" id="E6z-kK-PVc">
+                    <navigationItem key="navigationItem" title="My Events" id="E6z-kK-PVc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wHQ-7C-Xd1">
                             <connections>
                                 <segue destination="dOn-au-yfH" kind="show" identifier="AddItem" id="weS-hC-uuC"/>
@@ -453,11 +456,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--All Events-->
+        <!--My Events-->
         <scene sceneID="LbG-VE-Jbs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ezc-LW-k7I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Events" image="calendar" selectedImage="calendar" id="hNV-pO-awX"/>
+                    <tabBarItem key="tabBarItem" title="My Events" image="person" selectedImage="person" id="hNV-pO-awX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pGT-ct-Nzc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

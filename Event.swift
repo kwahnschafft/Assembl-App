@@ -71,7 +71,6 @@ class Event: NSObject, NSCoding {
     //required: initalizer must be implemented in all subclasses
     //convenience: must call a designated initializer from the same class.
     required convenience init?(coder aDecoder: NSCoder) {
-        
         // The name is required. If we cannot decode a name string, the initializer should fail.
         guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
             os_log("Unable to decode the name for an Event object.", log: OSLog.default, type: .debug)
@@ -85,14 +84,18 @@ class Event: NSObject, NSCoding {
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         
         // The name is required. If we cannot decode a user object, the initializer should fail.
-        guard let user = aDecoder.decodeObject(forKey: PropertyKey.user) as? UserModel else {
-            os_log("Unable to decode the user for an Event object.", log: OSLog.default, type: .debug)
+        //let currentUser = loadCurrentUser()
+            // Must call designated initializer.
+        guard let user = Event.loadCurrentUser() else {
             return nil
         }
         
-        // Must call designated initializer.
         self.init(name: name, info: info!, photo: photo, user: user)
-        
+    
+    }
+    
+    class func loadCurrentUser() -> UserModel? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.CurrentUserArchiveURL.path) as? UserModel
     }
     
 }

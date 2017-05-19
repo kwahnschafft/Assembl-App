@@ -114,10 +114,13 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = EventNameTextField.text ?? "" //return the value if there is one, otherwise return default of ""
         let info = EventDescriptionTextField.text ?? ""
         let photo = photoImageView.image
-        let tempUser = UserModel(username: "what", password: "hey", events: [String]())
+        
+        guard let user = Event.loadCurrentUser() else {
+            return
+        }
         
         // Set the event to be passed to SecondViewController after the unwind segue.
-        event = Event(name: name, info: info, photo: photo, user: tempUser!)
+        event = Event(name: name, info: info, photo: photo, user: user)
     }
     
     
@@ -151,6 +154,10 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         EventDescriptionTextField.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
+    private func loadCurrentUser() -> UserModel? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.CurrentUserArchiveURL.path) as? UserModel
     }
     
 }

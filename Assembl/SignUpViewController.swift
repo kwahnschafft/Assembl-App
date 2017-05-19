@@ -9,6 +9,8 @@
 import UIKit
 import os.log
 
+var currentUser = UserModel(username: "", password: "", events: [String]())
+
 class SignUpViewController: UIViewController, UITextFieldDelegate   {
     
     @IBOutlet weak var usernameField: UITextField!
@@ -69,9 +71,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
+        let button2 = sender as! UIButton
+        let buttonTitle = button2.title(for: .normal)
         // Configure the destination view controller only when the save button is pressed ***not working, is this necessary??
-        guard let button = sender as? UIBarButtonItem, button === signUpButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+        if buttonTitle != "Sign up" {
+            os_log("The sign up button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
         
@@ -108,7 +112,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
         //create user based on input
         //*** failable initializer??
         user = UserModel(username: username, password: password, events: [String]())
+    
         
+        currentUser = user
+        saveCurrentUser()
         users.append(user!)
         saveUsers()
         
@@ -126,6 +133,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate   {
     
     private func loadUsers() -> [UserModel]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? [UserModel]
+    }
+    
+    private func saveCurrentUser() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(currentUser, toFile: UserModel.CurrentUserArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Current user successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save current user...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadCurrentUser() -> UserModel? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.CurrentUserArchiveURL.path) as? UserModel
     }
     
 }
