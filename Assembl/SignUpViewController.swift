@@ -9,13 +9,13 @@
 import UIKit
 import os.log
 
-class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate  {
+class SignUpViewController: UIViewController, UITextFieldDelegate   {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
-    var alert: UIAlertController?
+   // var alert: UIAlertController?
     var user: UserModel?
     
     required init(coder aDecoder: NSCoder!) {
